@@ -1,0 +1,22 @@
+.lp-capture {
+  width: 1440px;
+  min-height: 900px;
+  overflow: hidden;
+  background: #f5f8fc;
+}
+
+.lp-capture .lp-section {
+  box-sizing: border-box;
+  width: 1440px;
+  min-height: 900px;
+  padding: 96px 128px 104px;
+}
+
+.lp-capture .lp-section > header,
+.lp-capture .lp-tabs {
+  margin-bottom: 48px;
+}
+
+.lp-capture .lp-feature {
+  min-height: 390px;
+}

@@ -30,6 +30,12 @@ export default function MegaNav({ logoSrc, onNavigate }) {
   const open = (id) => { window.clearTimeout(closeTimer.current); setOpenId(id); };
   const delayedClose = () => { closeTimer.current = window.setTimeout(() => setOpenId(null), 140); };
   const closeAll = () => { setOpenId(null); setMobileOpen(false); };
+  const path = (window.location.hash.replace(/^#/, '').split('?')[0] || '/').replace(/\/$/, '') || '/';
+  const isCurrent = (menu) => {
+    if (menu.id === 'galaxy') return path === '/galaxy' || path === '/products/carnival' || path === '/products/kids';
+    if (menu.id === 'products') return path === '/products' || (path.startsWith('/products/') && !['/products/carnival','/products/kids'].includes(path));
+    return path === '/solutions' || path.startsWith('/solutions/');
+  };
 
   useEffect(() => {
     const onKeyDown = (event) => event.key === 'Escape' && closeAll();
@@ -52,26 +58,30 @@ export default function MegaNav({ logoSrc, onNavigate }) {
           <span>银河互联网电视<small>GALAXY · INTERNET TV</small></span>
         </a>
         <nav className="mega-nav__desktop" aria-label="主导航">
-          <a href="#/" onClick={(e) => navigate(e, '#/')}>首页</a>
-          {megaNavItems.map((menu) => (
-            <button key={menu.id} type="button" aria-expanded={openId === menu.id} aria-controls={`mega-panel-${menu.id}`} onMouseEnter={() => open(menu.id)} onFocus={() => open(menu.id)} onClick={() => setOpenId(openId === menu.id ? null : menu.id)}>
+          <a className={path === '/' ? 'is-current' : ''} aria-current={path === '/' ? 'page' : undefined} href="#/" onMouseEnter={closeAll} onFocus={closeAll} onClick={(e) => navigate(e, '#/')}>首页</a>
+          {megaNavItems.map((menu) => menu.href ? (
+            <a className={isCurrent(menu) ? 'is-current' : ''} aria-current={isCurrent(menu) ? 'page' : undefined} key={menu.id} href={menu.href} aria-expanded={openId === menu.id} aria-controls={`mega-panel-${menu.id}`} onMouseEnter={() => open(menu.id)} onFocus={() => open(menu.id)} onClick={(e) => navigate(e, menu.href)}>
+              {menu.label}<span className="mega-nav__chevron" aria-hidden="true" />
+            </a>
+          ) : (
+            <button className={isCurrent(menu) ? 'is-current' : ''} type="button" key={menu.id} aria-expanded={openId === menu.id} aria-controls={`mega-panel-${menu.id}`} onMouseEnter={() => open(menu.id)} onFocus={() => open(menu.id)} onClick={() => open(openId === menu.id ? null : menu.id)}>
               {menu.label}<span className="mega-nav__chevron" aria-hidden="true" />
             </button>
           ))}
-          <a href="#/about" onClick={(e) => navigate(e, '#/about')}>关于银河</a>
+          <a className={path === '/about' ? 'is-current' : ''} aria-current={path === '/about' ? 'page' : undefined} href="#/about" onMouseEnter={closeAll} onFocus={closeAll} onClick={(e) => navigate(e, '#/about')}>关于银河</a>
         </nav>
-        <a className="mega-nav__cta" href="#contact">咨询商务</a>
+        <a className="mega-nav__cta" href="mailto:XXXX@gitv.cn">咨询商务</a>
         <button className="mega-nav__mobile-toggle" type="button" aria-expanded={mobileOpen} aria-label={mobileOpen ? '关闭导航' : '打开导航'} onClick={() => setMobileOpen(!mobileOpen)}><span /><span /></button>
       </div>
 
       <div className="mega-nav__panel-shell" aria-hidden={!openId} onMouseEnter={() => window.clearTimeout(closeTimer.current)}>
         {megaNavItems.map((menu) => (
           <section id={`mega-panel-${menu.id}`} className={`mega-panel ${openId === menu.id ? 'is-active' : ''}`} key={menu.id} aria-label={`${menu.label}二级导航`} aria-hidden={openId !== menu.id}>
-            <div className="mega-panel__inner">
-              <div className="mega-panel__intro"><h2>{menu.title}</h2></div>
-              <div className={`mega-panel__grid mega-panel__grid--${menu.id}`}>
-                {menu.items.map((item) => <a href={item.href} key={item.href} onClick={(e) => navigate(e, item.href)} style={{ '--item-accent': item.accent }}><i><NavIcon name={item.icon} /></i><span><strong>{item.title}</strong>{item.description && <small>{item.description}</small>}</span><b aria-hidden="true">↗</b></a>)}
-              </div>
+            <div className={`mega-panel__inner mega-panel__inner--${menu.id}`}>
+              {menu.groups.map((group, index) => <div className="mega-panel__group" key={group.title || index}>
+                {menu.showGroupTitles && <header><span>{group.title}</span><i /></header>}
+                <div className="mega-panel__items">{group.items.map((item) => <a href={item.href} key={item.href} onClick={(e) => navigate(e, item.href)} style={{ '--item-accent': item.accent }}><i><NavIcon name={item.icon} /></i><span><strong>{item.title}</strong>{item.description && <small>{item.description}</small>}</span></a>)}</div>
+              </div>)}
             </div>
           </section>
         ))}
@@ -79,7 +89,7 @@ export default function MegaNav({ logoSrc, onNavigate }) {
 
       <nav className={`mega-nav__mobile ${mobileOpen ? 'is-active' : ''}`} aria-label="移动端导航" aria-hidden={!mobileOpen}>
         <a href="#/" onClick={(e) => navigate(e, '#/')}>首页</a>
-        {megaNavItems.map((menu) => <div className="mobile-group" key={menu.id}><button type="button" aria-expanded={openId === menu.id} onClick={() => setOpenId(openId === menu.id ? null : menu.id)}>{menu.label}<span className="mega-nav__chevron" /></button><div className="mobile-group__items" aria-hidden={openId !== menu.id}>{menu.items.map(item => <a href={item.href} key={item.href} onClick={(e) => navigate(e, item.href)}>{item.title}<span>↗</span></a>)}</div></div>)}
+        {megaNavItems.map((menu) => <div className="mobile-group" key={menu.id}><div className="mobile-group__head">{menu.href ? <a href={menu.href} onClick={(e) => navigate(e, menu.href)}>{menu.label}</a> : <span>{menu.label}</span>}<button type="button" aria-expanded={openId === menu.id} aria-label={`展开${menu.label}菜单`} onClick={() => setOpenId(openId === menu.id ? null : menu.id)}><span className="mega-nav__chevron" /></button></div><div className="mobile-group__items" aria-hidden={openId !== menu.id}>{menu.groups.flatMap(group => group.items).map(item => <a href={item.href} key={item.href} onClick={(e) => navigate(e, item.href)}>{item.title}<span>↗</span></a>)}</div></div>)}
         <a href="#/about" onClick={(e) => navigate(e, '#/about')}>关于银河</a>
       </nav>
     </header>

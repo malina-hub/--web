@@ -1,8 +1,8 @@
 import Aurora from './components/Aurora';
 import ChromaGrid from './components/ChromaGrid';
+import MegaNav from './components/mega-nav/MegaNav';
 import logoTop from './assets/figma/logo-top.svg';
 import logoFooter from './assets/figma/logo-footer.svg';
-import navArrow from './assets/figma/nav-arrow.svg';
 import buttonArrow from './assets/figma/button-arrow.svg';
 import contactLocation from './assets/figma/contact-location.svg';
 import contactPhone from './assets/figma/contact-phone.svg';
@@ -41,17 +41,7 @@ function PartnerTitle({ children }) {
 export default function App() {
   return (
     <main>
-      <header className="nav">
-        <img className="nav-logo" src={logoTop} alt="GITV" />
-        <nav>
-          <a href="#top">首页</a>
-          <a className="nav-drop" href="#metrics">银河+<img src={navArrow} alt="" /></a>
-          <a className="nav-drop" href="#/products/carnival">产品矩阵<img src={navArrow} alt="" /></a>
-          <a className="nav-drop" href="#partners">解决方案<img src={navArrow} alt="" /></a>
-          <a href="#contact">关于银河</a>
-        </nav>
-        <a className="nav-cta" href="#contact">咨询商务</a>
-      </header>
+      <MegaNav logoSrc={logoTop} />
 
       <section className="hero" id="top">
         <div className="aurora-layer"><Aurora colorStops={['#171717', '#00b1fa', '#0054ff']} blend={0.5} amplitude={1} speed={0.5} /></div>
@@ -60,25 +50,25 @@ export default function App() {
           <div className="hero-copy">
             <p><strong>银河互联网电视（GITV）</strong><span>，坐拥国家级媒体与产业资本双重背书，执掌中央银河集成平台及央广TV、江苏互联网电视内容高地。</span><strong>以海量正版内容为根基，全链路技术为引擎，AI智能体为大脑，为终端厂商提供“内容+桌面+数据+AI”的颠覆性全栈方案</strong><span>。覆盖超2亿家庭终端，稳居行业领军阵营，重塑大屏生态格局。我们以“全栈智联，慧启生活”为使命，引领AI赋能商业与管理变革，</span><strong>矢志为亿万家庭开启智慧、温暖、极致的数字生活新纪元。</strong></p>
             <div className="actions">
-              <a href="#story">探索更多产品<img src={buttonArrow} alt="" /></a>
-              <a href="#partners">查看解决方案</a>
+              <a href="#/products">探索更多产品<img src={buttonArrow} alt="" /></a>
+              <a href="#/solutions">查看解决方案</a>
             </div>
           </div>
         </div>
       </section>
 
       <section className="metrics section" id="metrics">
-        <h2>核心数据</h2>
+        <h2>亿万家庭的共同选择</h2>
         <div className="metric-chroma"><ChromaGrid items={metricItems} columns={2} rows={2} radius={300} damping={0.45} fadeOut={0.6} ease="power3.out" /></div>
       </section>
 
       <section className="story section" id="story">
-        <div className="story-copy"><h2>全栈链接慧启生活</h2><p>{story}</p></div>
+        <div className="story-copy"><h2>让智慧融入每一种家庭生活</h2><p>{story}</p></div>
         <div className="media-placeholder">GITV 大屏界面</div>
       </section>
 
       <section className="partners section" id="partners">
-        <h2>与行业合作伙伴共建智慧生态</h2>
+        <h2>与你熟悉的品牌，共创更好的大屏体验</h2>
         <div className="partner-groups">
           <div className="partner-group"><PartnerTitle>生态合作伙伴</PartnerTitle><div className="partner-grid eco-grid">{ecoPartners.map((src, i) => <img className="partner-card-image" src={src} alt={`生态合作伙伴 ${i + 1}`} key={src} />)}</div></div>
           <div className="partner-group"><PartnerTitle>运营商合作伙伴</PartnerTitle><div className="partner-grid carrier-grid">{carrierPartners.map((src, i) => <img className="partner-card-image" src={src} alt={`运营商合作伙伴 ${i + 1}`} key={src} />)}</div></div>
@@ -86,8 +76,9 @@ export default function App() {
       </section>
 
       <footer className="site-footer" id="contact">
+        <div className="footer-callout"><h2>AI 时代的新工作方式<br/>从银河开始</h2><a href="mailto:XXXX@gitv.cn">咨询商务<img src={buttonArrow} alt=""/></a></div>
         <div className="footer-inner">
-          <div className="footer-brand"><div><img src={logoFooter} alt="GITV" /><h2>银河互联网电视</h2></div><p>智慧大屏整体解决方案引领者，以「内容+技术+运营」三位一体能力，连接内容、设备与人。让我们共同巩固基础、主动突破、多元拓展、建立生态。</p></div>
+          <div className="footer-brand"><div><img src={logoFooter} alt="GITV" /><h2>银河互联网电视</h2></div></div>
           <div className="footer-contact-row">
             <div className="footer-contact"><h3>联系我们</h3><p><img src={contactLocation} alt="" />北京市丰台区南四环西路188号十八区7号楼</p><p><img src={contactPhone} alt="" />4006-597-010</p><p><img src={contactEmail} alt="" />XXXX@gitv.cn</p></div>
           </div>

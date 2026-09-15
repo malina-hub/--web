@@ -9,7 +9,7 @@ import policeIcon from '../assets/figma/police.png';
 import integrityMark from '../assets/figma/integrity.png';
 import productLicense from '../assets/figma/product-license.png';
 import workshopImage from '../assets/carnival/workshop-2.png';
-import heroVisual from '../assets/carnival/hero-visual.svg';
+import xiaohongshuCard from '../assets/carnival/xiaohongshu.jpg';
 import AccordionGallery from '../components/AccordionGallery';
 import LightRays from '../components/LightRays';
 import highlightLight from '../assets/carnival/highlight-light.svg';
@@ -164,7 +164,7 @@ function CityShowcase() {
 function Footer() {
   return (
     <footer className="site-footer" id="contact">
-      <div className="footer-callout"><h2>AI 时代的新工作方式<br/>从银河开始</h2><a href="mailto:XXXX@gitv.cn">咨询商务</a></div>
+      <div className="footer-callout"><h2>准备好一起点亮<br/>下一座城市了吗</h2><a href="mailto:XXXX@gitv.cn">咨询商务</a></div>
       <div className="footer-inner">
         <div className="footer-brand"><div><img src={logoFooter} alt="GITV" /><h2>银河互联网电视</h2></div><p>智慧大屏整体解决方案引领者，以「内容+技术+运营」三位一体能力，连接内容、设备与人。让我们共同巩固基础、主动突破、多元拓展、建立生态。</p></div>
         <div className="footer-contact"><h3>联系我们</h3><div><p><img src={contactLocation} alt="" />北京市丰台区南四环西路188号十八区7号楼</p><p><img src={contactPhone} alt="" />4006-597-010</p><p><img src={contactEmail} alt="" />XXXX@gitv.cn</p></div></div>
@@ -192,19 +192,38 @@ export default function CarnivalPage() {
       <MegaNav logoSrc={logoTop} onNavigate={navigate} />
       <section className="carnival-hero" id="top">
         <div className="hero-rays" aria-hidden="true"><LightRays raysOrigin="top-center" raysColor="#007ef7" raysSpeed={2.1} lightSpread={0.8} rayLength={1.2} followMouse mouseInfluence={0.1} noiseAmount={0.1} distortion={0.05} className="custom-rays" /></div>
-        <div className="hero-copy"><div className="hero-title"><p>沉浸式大屏IP互动体验平台</p><h1>银河光影嘉年华</h1></div><p className="hero-description">打造沉浸式大屏IP互动体验场景，通过虚拟现实技术、光影互动装置与IP内容深度融合，为家庭用户提供前所未有的视觉盛宴与互动体验，覆盖节庆活动、品牌营销、影视宣传等多元场景。</p><div className="hero-actions"><a href="#/products/carnival" onClick={(event) => scrollTo('#highlights', event)}>了解详情 <span>→</span></a><a href="#/products/carnival" onClick={(event) => scrollTo('#footprints', event)}>查看活动档期</a><a href="#/products/carnival" onClick={(event) => scrollTo('#contact', event)}>咨询商务</a></div></div>
-        <div className="hero-media"><img src={heroVisual} alt="光影入场，让每个人走进电影" /></div>
+        <div className="hero-copy">
+          <div className="hero-title"><h1>银河光影嘉年华</h1></div>
+          <p className="hero-description">打造沉浸式大屏IP互动体验场景，通过虚拟现实技术、光影互动装置与IP内容深度融合，为家庭用户提供前所未有的视觉盛宴与互动体验，覆盖节庆活动、品牌营销、影视宣传等多元场景。</p>
+          <div className="hero-actions">
+            <div className="hero-action-popover hero-action-popover--social">
+              <a className="hero-action-button hero-action-button--primary" href="#highlights" onClick={(event) => scrollTo('#highlights', event)}>了解详情 <span>→</span></a>
+              <div className="social-preview" role="tooltip"><img src={xiaohongshuCard} alt="银河光影嘉年华小红书官方账号" /></div>
+            </div>
+            <a className="hero-action-button" href="#footprints" onClick={(event) => scrollTo('#footprints', event)}>查看活动档期</a>
+            <div className="hero-action-popover hero-action-popover--contact">
+              <button className="hero-action-button" type="button" aria-haspopup="dialog">咨询商务</button>
+              <aside className="business-popover" role="dialog" aria-label="商务合作咨询">
+                <span className="business-popover__icon"><img src={contactEmail} alt="" /></span>
+                <h2>商务合作咨询</h2>
+                <p>欢迎联系商务负责人，沟通合作机会与活动档期</p>
+                <div className="business-popover__email"><small>商务邮箱</small><strong>wangmx@cnb.cn</strong></div>
+                <a className="business-popover__send" href="mailto:wangmx@cnb.cn"><img src={contactEmail} alt="" />发送邮件</a>
+              </aside>
+            </div>
+          </div>
+        </div>
       </section>
 
-      <section className="content-section core" id="highlights"><div className="container"><SectionHeading title="四大核心亮点" /><div className="four-grid">{highlights.map(([icon, title, text]) => <article className="feature-card" key={title}><img src={icon} alt="" /><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
+      <section className="content-section core" id="highlights"><div className="container"><SectionHeading title="一场嘉年华，四种沉浸体验" /><div className="four-grid">{highlights.map(([icon, title, text]) => <article className="feature-card" key={title}><img src={icon} alt="" /><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
 
-      <section className="content-section workshop" id="workshop"><div className="container"><SectionHeading title="影视工业沉浸式体验">影视幕后工坊・影视手艺片场技艺秀</SectionHeading><WorkshopExperience /></div></section>
+      <section className="content-section workshop" id="workshop"><div className="container"><SectionHeading title="亲手走进电影幕后">影视幕后工坊・影视手艺片场技艺秀</SectionHeading><WorkshopExperience /></div></section>
 
-      <section className="content-section live"><div className="container"><SectionHeading title="走进光影现场">身临其境感受光影嘉年华的震撼魅力 —— 每一帧都是沉浸式光影盛宴的精彩瞬间</SectionHeading><div className="live-media"><img src={workshopImage} alt="银河光影嘉年华活动现场"/></div></div></section>
+      <section className="content-section live"><div className="container"><SectionHeading title="身临其境，感受光影现场">每一帧都是沉浸式光影盛宴的精彩瞬间</SectionHeading><div className="live-media"><img src={workshopImage} alt="银河光影嘉年华活动现场"/></div></div></section>
 
-      <section className="content-section footprints" id="footprints"><div className="container"><SectionHeading title="银河光影嘉年华点亮城市">足迹已至北京、上海，更多城市即将点亮</SectionHeading><CityShowcase /></div></section>
+      <section className="content-section footprints" id="footprints"><div className="container"><SectionHeading title="下一站，与你的城市相见">足迹已至北京、上海，更多城市即将点亮</SectionHeading><CityShowcase /></div></section>
 
-      <section className="content-section value"><div className="container"><SectionHeading title="项目价值">以影视工业体验为切入点，帮助地方文旅引流增收</SectionHeading><div className="four-grid value-grid">{values.map(([image,title,text]) => <article key={title}><img src={image} alt="" /><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
+      <section className="content-section value"><div className="container"><SectionHeading title="让一场光影盛会，为城市持续创造价值">以影视工业体验为切入点，帮助地方文旅引流增收</SectionHeading><div className="four-grid value-grid">{values.map(([image,title,text]) => <article key={title}><img src={image} alt="" /><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
       <Footer />
     </main>
   );
