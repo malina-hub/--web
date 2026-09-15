@@ -76,7 +76,7 @@ export default function App() {
       </section>
 
       <footer className="site-footer" id="contact">
-        <div className="footer-callout"><h2>AI 时代的新工作方式<br/>从银河开始</h2><a href="mailto:XXXX@gitv.cn">咨询商务<img src={buttonArrow} alt=""/></a></div>
+        <div className="footer-callout"><h2>携手共建智慧大屏新生态<br/>让好内容连接亿万家庭</h2><a href="mailto:XXXX@gitv.cn">咨询商务<img src={buttonArrow} alt=""/></a></div>
         <div className="footer-inner">
           <div className="footer-brand"><div><img src={logoFooter} alt="GITV" /><h2>银河互联网电视</h2></div></div>
           <div className="footer-contact-row">

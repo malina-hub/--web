@@ -20,7 +20,7 @@ a { color: inherit; text-decoration: none; cursor: pointer; }
 .hero-copy p { width: 796px; max-width: 100%; margin: 0; color: rgba(255,255,255,.8); font-size: 16px; font-weight: 400; line-height: 30px; }
 .hero-copy p strong { color: #fff; font-weight: 500; }
 .actions { display: flex; gap: 12px; }.actions a { height: 40px; padding: 0 20px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,.4); border-radius: 8px; color: rgba(255,255,255,.8); font-size: 14px; font-weight: 500; line-height: 20px; background: rgba(255,255,255,.1); transition: color .25s ease, background .25s ease, border-color .25s ease, transform .25s ease; }
-.actions a:first-child { height: 40px; gap: 4px; padding-left: 20px; padding-right: 16px; border-color: transparent; color: #fff; background: linear-gradient(21deg, #1873ed 51%, #abb2ff 97%); }.actions img { width: 16px; height: 16px; }
+.actions a:first-child { height: 40px; gap: 4px; padding-left: 20px; padding-right: 16px; border: 0; color: #fff; background: linear-gradient(21deg, #1873ed 51%, #abb2ff 97%); }.actions img { width: 16px; height: 16px; }
 .actions a:first-child:hover { background-image: linear-gradient(23deg, #1a7cff 51%, #c2c7ff 97%); }
 .actions a:nth-child(2):hover { border-color: #fff; color: #14171f; background: #fff; }
 .nav a:focus-visible, .actions a:focus-visible { outline: 2px solid #80adf9; outline-offset: 3px; }
@@ -57,13 +57,13 @@ a:focus-visible, button:focus-visible { outline: 2px solid #88adff; outline-offs
   100% { background-position: 28% 100%; }
 }
 .story { padding: 80px 64px 100px; display: flex; flex-direction: column; align-items: center; gap: 40px; }
-.story-copy { display: flex; flex-direction: column; align-items: center; gap: 24px; }.story h2 { margin: 0; font-size: 36px; font-weight: 600; line-height: 1.2; }
-.story p { width: 1000px; max-width: 100%; height: 90px; margin: 0; display: flex; align-items: center; color: rgba(255,255,255,.9); text-align: center; font-size: 16px; font-weight: 400; line-height: 28px; }
-.media-placeholder { width: 1100px; max-width: 100%; height: 400px; padding: 0; overflow: hidden; border-radius: 16px; color: #1f2129; background: #ccd1db; font-size: 17px; font-weight: 700; }
+.story-copy { width: 1000px; max-width: 100%; display: flex; flex-direction: column; align-items: center; gap: 24px; }.story h2 { margin: 0; font-size: 36px; font-weight: 600; line-height: 1.2; }
+.story p { width: 100%; height: 90px; margin: 0; display: flex; align-items: center; color: rgba(255,255,255,.9); text-align: center; font-size: 16px; font-weight: 400; line-height: 28px; }
+.media-placeholder { width: 1000px; max-width: 100%; height: 400px; padding: 0; overflow: hidden; border-radius: 16px; color: #1f2129; background: #ccd1db; font-size: 17px; font-weight: 700; }
 .partners { padding: 80px 64px 100px; display: flex; flex-direction: column; align-items: center; gap: 40px; overflow: hidden; }.partners > h2 { margin: 0; font-size: 36px; font-weight: 600; line-height: 1.2; }
-.partner-groups { width: 1100px; max-width: 100%; display: flex; flex-direction: column; gap: 80px; }.partner-group { display: flex; flex-direction: column; align-items: center; gap: 28px; }
+.partner-groups { width: 1000px; max-width: 100%; display: flex; flex-direction: column; gap: 80px; }.partner-group { display: flex; flex-direction: column; align-items: center; gap: 28px; }
 .partner-title { display: flex; align-items: center; gap: 16px; }.partner-title h3 { margin: 0; font-size: 24px; font-weight: 500; line-height: 1.2; }.partner-title i { width: 32px; height: 2px; background: linear-gradient(90deg, #fff, transparent); }.partner-title i:first-child { transform: rotate(180deg); }
-.partner-grid { width: 1100px; display: grid; gap: 24px; }.eco-grid { grid-template-columns: repeat(5, 1fr); }.carrier-grid { grid-template-columns: repeat(3, 1fr); }
+.partner-grid { width: 1000px; max-width: 100%; display: grid; gap: 24px; }.eco-grid { grid-template-columns: repeat(5, 1fr); }.carrier-grid { grid-template-columns: repeat(3, 1fr); }
 .partner-grid span { height: 100px; display: grid; place-items: center; padding: 8px; border-radius: 10px; color: #1f2129; background: #fff; font-size: 13px; font-weight: 400; line-height: 1.15; text-align: center; white-space: pre-line; }
 .partner-card-image { display: block; width: 100%; height: 100px; border-radius: 10px; object-fit: cover; }
 .site-footer { padding: 0 64px 100px; color: #fff; background: #14171f; }

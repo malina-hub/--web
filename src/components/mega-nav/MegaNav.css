@@ -1,7 +1,7 @@
 :root { --mega-ink: #0a0d13; --mega-line: rgba(255,255,255,.14); --mega-text: #f7f9fc; --mega-muted: #9aa5b5; }
 .mega-nav { position: fixed; inset: 0 0 auto; z-index: 100; color: var(--mega-text); font-family: "PingFang SC", "Noto Sans SC", sans-serif; }
-.mega-nav::before { content: ""; position: absolute; inset: 0 0 auto; height: 60px; z-index: -1; background: rgba(10,13,19,.9); backdrop-filter: blur(18px); border-bottom: 1px solid transparent; transition: border-color .25s ease, background .25s ease; }
-.mega-nav.is-open::before { background: #0a0d13; border-color: var(--mega-line); }
+.mega-nav::before { content: ""; position: absolute; inset: 0 0 auto; height: 60px; z-index: -1; background: rgba(10,13,19,.72); -webkit-backdrop-filter: saturate(130%) blur(18px); backdrop-filter: saturate(130%) blur(18px); border-bottom: 1px solid rgba(255,255,255,.06); transition: border-color .25s ease, background .25s ease; }
+.mega-nav.is-open::before { background: rgba(10,13,19,.92); border-color: var(--mega-line); }
 .mega-nav__bar { width: calc(100% - 80px); height: 60px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; }
 .mega-nav__brand { justify-self: start; display: flex; align-items: center; gap: 12px; min-width: 210px; }
 .mega-nav__brand img { width: 96px; height: 20px; object-fit: contain; }
