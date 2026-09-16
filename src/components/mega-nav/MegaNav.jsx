@@ -1,6 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { megaNavItems } from './megaNavData';
 import './MegaNav.css';
+import smartScreenIcon from '../../assets/nav-smart-screen.svg';
+import smartWideIcon from '../../assets/nav-smart-wide.svg';
+import agentIcon from '../../assets/nav-agent.svg';
+import tianguangIcon from '../../assets/nav-tianguang.svg';
+import dataIcon from '../../assets/nav-data.svg';
+import orbitAdIcon from '../../assets/nav-orbit-ad.svg';
+import aiNewsIcon from '../../assets/nav-ai-news.svg';
 
 const iconPaths = {
   film: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 4v16M17 4v16M3 9h4M17 9h4M3 15h4M17 15h4"/>',
@@ -18,6 +25,13 @@ const iconPaths = {
 };
 
 function NavIcon({ name }) {
+  if (name === 'smart-screen') return <img src={smartScreenIcon} alt="" />;
+  if (name === 'smart-wide') return <img src={smartWideIcon} alt="" />;
+  if (name === 'agent-image') return <img src={agentIcon} alt="" />;
+  if (name === 'tianguang-image') return <img src={tianguangIcon} alt="" />;
+  if (name === 'data-image') return <img src={dataIcon} alt="" />;
+  if (name === 'orbit-image') return <img src={orbitAdIcon} alt="" />;
+  if (name === 'ai-news-image') return <img src={aiNewsIcon} alt="" />;
   return <svg aria-hidden="true" viewBox="0 0 24 24" dangerouslySetInnerHTML={{ __html: iconPaths[name] }} />;
 }
 

@@ -1,0 +1,3 @@
+.spotlight-card { position: relative; overflow: hidden; }
+.spotlight-card::after { position: absolute; inset: 0; content: ''; pointer-events: none; opacity: 0; background: radial-gradient(260px circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%), var(--spotlight-color), transparent 70%); transition: opacity .25s ease; }
+.spotlight-card:hover::after { opacity: 1; }

@@ -71,6 +71,9 @@
 .chroma-card:not(.is-active) { opacity: 0.72; }
 .chroma-card.is-active::after { opacity: 1; }
 
+/* Keep the active card's flowing light in the visual area above the copy. */
+.chroma-card.is-active::after { inset: 0 0 58%; background: linear-gradient(115deg, transparent 0%, rgba(255,255,255,.08) 35%, transparent 70%), var(--card-active-gradient); }
+
 .chroma-card:hover {
   border-color: var(--card-border);
 }

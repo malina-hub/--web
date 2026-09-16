@@ -1,0 +1,4 @@
+.border-glow { position: relative; padding: 1px; border-radius: var(--border-radius); background: transparent; }
+.border-glow::before { position: absolute; inset: 0; content: ''; border-radius: inherit; opacity: 0; background: radial-gradient(100px circle at var(--glow-x, 50%) var(--glow-y, 50%), var(--glow-colors), transparent 70%); transition: opacity .25s ease; }
+.border-glow:hover::before { opacity: 1; }
+.border-glow__inner { position: relative; z-index: 1; height: 100%; border-radius: calc(var(--border-radius) - 1px); }

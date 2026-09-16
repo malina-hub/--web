@@ -10,19 +10,19 @@ export const megaNavItems = [
     id: 'products', label: '产品矩阵', href: '#/products', showGroupTitles: true,
     groups: [
       { title: '平台产品', items: [
-        { title: '智慧大屏', description: '全场景大屏内容聚合与智能分发平台', href: '#/products/aggregation', accent: '#00d4ff', icon: 'screen' },
-        { title: '智慧泛屏', description: '央媒品质·亿级内容·极致体验', href: '#/products/galaxytv', accent: '#ff6b35', icon: 'play' },
+        { title: '智慧大屏', description: '全场景大屏内容聚合与智能分发平台', href: '#/products/aggregation', accent: '#00d4ff', icon: 'smart-screen' },
+        { title: '智慧泛屏', description: '央媒品质·亿级内容·极致体验', href: '#/products/galaxytv', accent: '#ff6b35', icon: 'smart-wide' },
       ] },
       { title: '智能技术', items: [
-        { title: '小可影音智能体', description: '重新定义大屏交互的 AI 智能体', href: '#/products/agent', accent: '#a78bfa', icon: 'bot' },
-        { title: '天光引擎', description: '全链路赋能，激活业务新效能', href: '#/products/tianguang', accent: '#f59e0b', icon: 'sun' },
-        { title: '数据平台', description: '全链路数据能力，驱动业务增长', href: '#/products/data', accent: '#60a5fa', icon: 'data' },
+        { title: '小可影音智能体', description: '重新定义大屏交互的 AI 智能体', href: '#/products/agent', accent: '#a78bfa', icon: 'agent-image' },
+        { title: '天光引擎', description: '全链路赋能，激活业务新效能', href: '#/products/tianguang', accent: '#f59e0b', icon: 'tianguang-image' },
+        { title: '数据平台', description: '全链路数据能力，驱动业务增长', href: '#/products/data', accent: '#60a5fa', icon: 'data-image' },
       ] },
       { title: '商业增长', items: [
-        { title: '猎户座广告', description: '大屏流量变现的全场景广告平台', href: '#/products/advertising', accent: '#34d399', icon: 'orbit' },
+        { title: '猎户座广告', description: '大屏流量变现的全场景广告平台', href: '#/products/advertising', accent: '#34d399', icon: 'orbit-image' },
       ] },
       { title: '内容与品牌 IP', items: [
-        { title: 'AI 资讯', description: '零干预·高转化的资讯体验方案', href: '#/products/ainews', accent: '#06b6d4', icon: 'news' },
+        { title: 'AI 资讯', description: '零干预·高转化的资讯体验方案', href: '#/products/ainews', accent: '#06b6d4', icon: 'ai-news-image' },
       ] },
     ],
   },

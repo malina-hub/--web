@@ -5,13 +5,25 @@ import logoFooter from '../assets/figma/logo-footer.svg';
 import contactLocation from '../assets/figma/contact-location.svg';
 import contactPhone from '../assets/figma/contact-phone.svg';
 import contactEmail from '../assets/figma/contact-email.svg';
+import citySwitchArrow from '../assets/city-switch-arrow.svg';
+import cityFrame from '../assets/city-frame.svg';
 import policeIcon from '../assets/figma/police.png';
 import integrityMark from '../assets/figma/integrity.png';
 import productLicense from '../assets/figma/product-license.png';
 import workshopImage from '../assets/carnival/workshop-2.png';
+import makeupImage from '../assets/carnival/微信图片_20260723160434.jpg';
+import makeupImageAlt from '../assets/carnival/微信图片_20260723160442.jpg';
+import greenScreenImage from '../assets/carnival/微信图片_20260723160520.jpg';
+import greenScreenImageAlt from '../assets/carnival/微信图片_20260723160537.jpg';
+import foleyVideo from '../assets/carnival/C6419.MP4';
+import foleyVideoAlt from '../assets/carnival/C6563.MP4';
+import dubbingVideo from '../assets/carnival/C0235.MP4';
+import dubbingVideoAlt from '../assets/carnival/C0239.MP4';
 import xiaohongshuCard from '../assets/carnival/xiaohongshu.jpg';
 import AccordionGallery from '../components/AccordionGallery';
-import LightRays from '../components/LightRays';
+import Prism from '../components/Prism';
+import SpotlightCard from '../components/SpotlightCard';
+import BorderGlow from '../components/BorderGlow';
 import highlightLight from '../assets/carnival/highlight-light.svg';
 import highlightIp from '../assets/carnival/highlight-ip.svg';
 import highlightFestival from '../assets/carnival/highlight-festival.svg';
@@ -36,10 +48,11 @@ const workshopItems = [
   ['04', '影视原声配音', '专业配音演员一人分饰多角演绎影视名场面，游客可近距离聆听声线塑造，上台亲身试音互动，解锁配音幕后乐趣'],
 ];
 
-const galleryItems = [
-  { image: 'https://picsum.photos/id/1015/900/1200', label: 'Canyon', link: '#' },
-  { image: 'https://picsum.photos/id/1018/900/1200', label: 'Ridgeline', link: '#' },
-  { image: 'https://picsum.photos/id/1039/900/1200', label: 'Falls', link: '#' },
+const gallerySets = [
+  [{ image: makeupImage, label: '影视妆造揭秘', link: '#' }, { image: makeupImageAlt, label: '妆造现场', link: '#' }],
+  [{ image: greenScreenImage, label: '影视绿幕拍摄', link: '#' }, { image: greenScreenImageAlt, label: '绿幕现场', link: '#' }],
+  [{ image: foleyVideo, label: '影视拟音特技', link: '#' }, { image: foleyVideoAlt, label: '拟音特效现场', link: '#' }],
+  [{ image: dubbingVideo, label: '影视原声配音', link: '#' }, { image: dubbingVideoAlt, label: '原声配音现场', link: '#' }],
 ];
 
 const workshopTracks = [
@@ -56,8 +69,8 @@ const values = [
 
 const cities = [
   { city: '北京', date: '2025.12.31 - 2026.01.01', venue: '首钢一高炉 SoReal 科幻乐园', visitors: '1.5万+', feature: '“影视+亲子”主题；跨年夜狂欢派对；强互动性' },
-  { city: '上海  |  广富林文化遗址公园', date: '2026.05.01-05.05、05.16-05.17', visitors: '12万+', feature: '“影视+击剑”主题；文体旅商联动；影视互动体验赋能击剑文化传播' },
-  { city: '上海 · 泰晤士小镇', date: '2026.09.30-10.04', feature: '“影视+咖啡”主题；多元化、高品质消费场景' },
+  { city: '上海', date: '2026.05.01-05.05、05.16-05.17', venue: '广富林文化遗址公园', visitors: '12万+', feature: '“影视+击剑”主题；文体旅商联动；影视互动体验赋能击剑文化传播' },
+  { city: '上海', date: '2026.09.30-10.04', venue: '泰晤士小镇', visitors: '12万+', feature: '“影视+咖啡”主题；多元化、高品质消费场景' },
   { city: '三亚', date: '筹备中', feature: '筹备中，敬请期待' },
 ];
 
@@ -75,14 +88,14 @@ function WorkshopExperience() {
     <div className="workshop-experience">
       <nav className="workshop-tabs" aria-label="影视工业体验类型">
         {workshopItems.map(([number, title], index) => (
-          <button type="button" className={activeTab === index ? 'is-active' : ''} onClick={() => setActiveTab(index)} key={number}>
+          <BorderGlow key={number} className={activeTab === index ? 'is-active' : ''} borderRadius={12} colors={['#80adf9', '#c084fc', '#38bdf8']}><button type="button" className={activeTab === index ? 'is-active' : ''} onClick={() => setActiveTab(index)}>
             <strong>{title}</strong>
             <span>打造沉浸式大屏IP互动体验场</span>
-          </button>
+          </button></BorderGlow>
         ))}
       </nav>
       <div className="workshop-gallery">
-        <AccordionGallery key={activeTab} items={galleryItems} defaultIndex={activeTab % galleryItems.length} expandRatio={0.52} trigger="hover" overlayColor="#383838" height={460} gap={10} radius={12} accentColor="#80adf9" />
+        <AccordionGallery key={activeTab} items={gallerySets[activeTab]} defaultIndex={0} expandRatio={0.8} trigger="hover" overlayColor="#383838" height={460} gap={10} radius={12} accentColor="#80adf9" />
       </div>
     </div>
   );
@@ -149,14 +162,14 @@ function CityShowcase() {
           const delta = (index - activeCity + cities.length) % cities.length;
           const position = delta === 0 ? 'is-active' : delta === 1 ? 'is-next' : delta === cities.length - 1 ? 'is-prev' : 'is-hidden';
           return <article className={`city-slide ${position}`} key={city.city} aria-hidden={position === 'is-hidden'}>
-            <div className="city-slide__head"><i aria-hidden="true">⌖</i><div><h3>{city.city}</h3><p>{city.date}</p></div></div>
+            <div className="city-slide__head"><i aria-hidden="true"><img src={cityFrame} alt="" /></i><div><h3>{city.venue ? `${city.city}｜${city.venue}` : city.city}</h3><p>{city.date}</p></div></div>
             {city.visitors && <div className="city-slide__metric"><span>参观人次</span><strong>{city.visitors}</strong></div>}
-            <div className="city-slide__feature"><span>{city.visitors ? '活动亮点' : ''}</span><p>{city.venue ? `场馆  ${city.venue}\n` : ''}{city.feature}</p></div>
+            <div className="city-slide__feature"><span>{city.visitors ? '活动亮点' : ''}</span><p>{city.feature}</p></div>
             {position === 'is-active' && city.visitors && <button type="button" onClick={() => document.querySelector('#highlights')?.scrollIntoView({ behavior: 'smooth' })}>查看详情</button>}
           </article>;
         })}
       </div>
-      <div className="city-controls"><button type="button" onClick={() => shift(-1)} aria-label="上一站">←</button><button type="button" onClick={() => shift(1)} aria-label="下一站">→</button></div>
+      <div className="city-controls"><button type="button" onClick={() => shift(-1)} aria-label="上一站"><img src={citySwitchArrow} alt="" /></button><button type="button" onClick={() => shift(1)} aria-label="下一站"><img src={citySwitchArrow} alt="" /></button></div>
     </div>
   );
 }
@@ -191,7 +204,7 @@ export default function CarnivalPage() {
     <main className="carnival-page">
       <MegaNav logoSrc={logoTop} onNavigate={navigate} />
       <section className="carnival-hero" id="top">
-        <div className="hero-rays" aria-hidden="true"><LightRays raysOrigin="top-center" raysColor="#007ef7" raysSpeed={2.1} lightSpread={0.8} rayLength={1.2} followMouse mouseInfluence={0.1} noiseAmount={0.1} distortion={0.05} className="custom-rays" /></div>
+        <div className="hero-rays" aria-hidden="true"><Prism animationType="rotate" timeScale={0.5} height={4.1} baseWidth={4.7} scale={3.6} hueShift={-0.1416} colorFrequency={0.7} noise={0} glow={0.5} /></div>
         <div className="hero-copy">
           <div className="hero-title"><h1>银河光影嘉年华</h1></div>
           <p className="hero-description">打造沉浸式大屏IP互动体验场景，通过虚拟现实技术、光影互动装置与IP内容深度融合，为家庭用户提供前所未有的视觉盛宴与互动体验，覆盖节庆活动、品牌营销、影视宣传等多元场景。</p>
@@ -215,7 +228,7 @@ export default function CarnivalPage() {
         </div>
       </section>
 
-      <section className="content-section core" id="highlights"><div className="container"><SectionHeading title="一场嘉年华，四种沉浸体验" /><div className="four-grid">{highlights.map(([icon, title, text]) => <article className="feature-card" key={title}><img src={icon} alt="" /><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
+      <section className="content-section core" id="highlights"><div className="container"><SectionHeading title="一场嘉年华，四种沉浸体验" /><div className="four-grid">{highlights.map(([icon, title, text]) => <SpotlightCard className="feature-card" spotlightColor="rgba(0, 229, 255, 0.2)" key={title}><img src={icon} alt="" /><h3>{title}</h3><p>{text}</p></SpotlightCard>)}</div></div></section>
 
       <section className="content-section workshop" id="workshop"><div className="container"><SectionHeading title="亲手走进电影幕后">影视幕后工坊・影视手艺片场技艺秀</SectionHeading><WorkshopExperience /></div></section>
 

@@ -5,3 +5,6 @@ dist/
 .tools/
 *.local
 *.log
+
+# Local preview videos are intentionally kept outside the GitHub repository.
+src/assets/carnival/*.MP4

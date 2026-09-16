@@ -1,4 +1,4 @@
-import Aurora from './components/Aurora';
+import ColorBends from './components/ColorBends';
 import ChromaGrid from './components/ChromaGrid';
 import MegaNav from './components/mega-nav/MegaNav';
 import logoTop from './assets/figma/logo-top.svg';
@@ -24,7 +24,7 @@ import carrierPartner1 from './assets/carrier-partners/1.png';
 import carrierPartner2 from './assets/carrier-partners/2.png';
 import carrierPartner3 from './assets/carrier-partners/3.png';
 
-const story = '面向智慧家庭与泛大屏生态，构建集内容聚合、智能分发、终端适配与数据洞察于一体的全栈式产品矩阵。已覆盖超2亿家庭及千万终端，将智能科技深度融入家庭生活的每个角落。银河持续引领大屏生态创新，积极探索AI赋能商业与管理的新路径，致力为亿万家庭打造更智慧、更美好的大屏体验。';
+const story = '面向智慧家庭与泛大屏生态，银河构建集内容、技术与运营于一体的产品矩阵，服务超2亿家庭与千万终端。';
 const metricImage = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 380"/%3E';
 const metricItems = [
   { image: metricImage, title: '2亿+', subtitle: '家庭终端覆盖', borderColor: '#88ADFF', gradient: 'linear-gradient(169deg, rgba(0,74,145,.5), rgba(19,54,81,.5) 39%, rgba(24,35,57,.5))', activeGradient: 'linear-gradient(156deg, #041329 3%, rgba(31,32,57,0) 35%), linear-gradient(39deg, #00a2ff 9%, rgba(0,0,0,0) 45%), linear-gradient(141deg, rgba(1,8,34,.9), #6c78e1 70%, #b899ff)' },
@@ -44,7 +44,8 @@ export default function App() {
       <MegaNav logoSrc={logoTop} />
 
       <section className="hero" id="top">
-        <div className="aurora-layer"><Aurora colorStops={['#171717', '#00b1fa', '#0054ff']} blend={0.5} amplitude={1} speed={0.5} /></div>
+        <div className="aurora-layer"><ColorBends colors={['#3270fd']} rotation={90} speed={0.47} scale={1} frequency={1} warpStrength={1} mouseInfluence={1} noise={0.15} parallax={0.5} iterations={1} intensity={1.5} bandWidth={6} transparent />
+        </div>
         <div className="hero-content">
           <h1><span>银河生态</span><em>融创未来</em></h1>
           <div className="hero-copy">

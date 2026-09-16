@@ -98,7 +98,7 @@ const AccordionGallery = ({
         onMouseEnter={()=>trigger==='hover'&&setActive(i)} onFocus={()=>setActive(i)}
         onKeyDown={e=>handleKeyDown(i,e)} role="listitem" tabIndex={0}
         aria-current={isActive?'true':undefined} aria-label={item.label}>
-        <span className="ag-panel__frame"><span className="ag-panel__media" ref={el=>mediaRefs.current[i]=el}><img src={item.image} alt={item.alt||item.label||''} draggable="false"/></span><span className="ag-panel__overlay" aria-hidden="true"/></span>
+        <span className="ag-panel__frame"><span className="ag-panel__media" ref={el=>mediaRefs.current[i]=el}>{/\.(mp4|webm|ogg)$/i.test(item.image) ? <video src={item.image} aria-label={item.alt||item.label||''} muted loop autoPlay playsInline /> : <img src={item.image} alt={item.alt||item.label||''} draggable="false"/>}</span><span className="ag-panel__overlay" aria-hidden="true"/></span>
         {showLabels&&<span className="ag-panel__label" aria-hidden="true"><span className="ag-panel__bar" ref={el=>barRefs.current[i]=el}/><span className="ag-panel__text" ref={el=>textRefs.current[i]=el}>{item.label}</span></span>}
       </Tag>;
     })}
