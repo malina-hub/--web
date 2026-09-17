@@ -3,7 +3,7 @@ export const megaNavItems = [
     id: 'galaxy', label: '银河+', href: null, showGroupTitles: false,
     groups: [{ items: [
       { title: '银河光影嘉年华', description: '沉浸式大屏 IP 互动体验平台', href: '#/products/carnival', accent: '#fb923c', icon: 'film' },
-      { title: '银河少儿', description: '安全、丰富的儿童视听产品', href: '#/products/kids', accent: '#f472b6', icon: 'spark' },
+      { title: '银河少儿', description: '安全、丰富的儿童视听产品', href: '#/products/kids', accent: '#f472b6', icon: 'kids-image' },
     ] }],
   },
   {
@@ -29,10 +29,10 @@ export const megaNavItems = [
   {
     id: 'solutions', label: '解决方案', href: '#/solutions', showGroupTitles: false,
     groups: [{ items: [
-      { title: '智慧大屏解决方案', description: '内容、桌面与运营一体化', href: '#/solutions/smarttv', accent: '#00d4ff', icon: 'screen' },
-      { title: '智能家居影音解决方案', description: '连接影音内容与家庭设备', href: '#/solutions/homeaudio', accent: '#a78bfa', icon: 'home' },
-      { title: '中屏场景解决方案', description: '适配多形态中屏使用场景', href: '#/solutions/midscreen', accent: '#34d399', icon: 'tablet' },
-      { title: '车载屏解决方案', description: '智能座舱影音与多屏协同', href: '#/solutions/autoscreen', accent: '#fb923c', icon: 'car' },
+      { title: '智慧大屏解决方案', description: '内容、桌面与运营一体化', href: '#/solutions/smarttv', accent: '#00d4ff', icon: 'solution-smart-screen-image' },
+      { title: '智能家居影音解决方案', description: '连接影音内容与家庭设备', href: '#/solutions/homeaudio', accent: '#a78bfa', icon: 'solution-home-image' },
+      { title: '中屏场景解决方案', description: '适配多形态中屏使用场景', href: '#/solutions/midscreen', accent: '#34d399', icon: 'solution-tablet-image' },
+      { title: '车载屏解决方案', description: '智能座舱影音与多屏协同', href: '#/solutions/autoscreen', accent: '#fb923c', icon: 'solution-car-image' },
     ] }],
   },
 ];

@@ -30,8 +30,9 @@
 .mega-panel__items a { min-height: 62px; display: grid; grid-template-columns: 20px 1fr; align-items: start; gap: 10px; padding: 10px; border-radius: 10px; transition: color .2s ease, background .2s ease, transform .2s ease; }
 .mega-panel__items a:hover, .mega-panel__items a:focus-visible { color: #14171f; background: #fff; transform: translateY(-1px); }
 .mega-panel__items a > i { width: 20px; height: 20px; margin-top: 2px; display: grid; place-items: center; border-radius: 0; color: var(--item-accent); background: transparent; }
-.mega-panel__items svg { width: 20px; height: 20px; fill: currentColor; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
-.mega-panel__items a > i > img { width: 20px; height: 20px; object-fit: contain; }
+.mega-panel__items svg { display: block; width: 20px; height: 20px; flex: 0 0 20px; fill: currentColor; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.mega-panel__items a > i > img { display: block; width: 20px; height: 20px; flex: 0 0 20px; object-fit: contain; object-position: center; }
+.mega-panel__items a > i > img.mega-nav-kids-icon { width: 24px; height: 24px; flex-basis: 24px; margin: -2px; }
 .mega-panel__items a > span { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
 .mega-panel__items strong { font-size: 15px; font-weight: 600; line-height: 24px; }
 .mega-panel__items small { overflow: hidden; color: rgba(255,255,255,.7); font-size: 12px; line-height: 18px; text-overflow: ellipsis; white-space: nowrap; }

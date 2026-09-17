@@ -8,6 +8,11 @@ import tianguangIcon from '../../assets/nav-tianguang.svg';
 import dataIcon from '../../assets/nav-data.svg';
 import orbitAdIcon from '../../assets/nav-orbit-ad.svg';
 import aiNewsIcon from '../../assets/nav-ai-news.svg';
+import kidsIcon from '../../assets/nav-kids.svg';
+import solutionSmartScreenIcon from '../../assets/nav-solution-smart-screen.svg';
+import solutionHomeIcon from '../../assets/nav-solution-home.svg';
+import solutionTabletIcon from '../../assets/nav-solution-tablet.svg';
+import solutionCarIcon from '../../assets/nav-solution-car.svg';
 
 const iconPaths = {
   film: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 4v16M17 4v16M3 9h4M17 9h4M3 15h4M17 15h4"/>',
@@ -25,6 +30,11 @@ const iconPaths = {
 };
 
 function NavIcon({ name }) {
+  if (name === 'kids-image') return <img className="mega-nav-kids-icon" src={kidsIcon} alt="" />;
+  if (name === 'solution-smart-screen-image') return <img src={solutionSmartScreenIcon} alt="" />;
+  if (name === 'solution-home-image') return <img src={solutionHomeIcon} alt="" />;
+  if (name === 'solution-tablet-image') return <img src={solutionTabletIcon} alt="" />;
+  if (name === 'solution-car-image') return <img src={solutionCarIcon} alt="" />;
   if (name === 'smart-screen') return <img src={smartScreenIcon} alt="" />;
   if (name === 'smart-wide') return <img src={smartWideIcon} alt="" />;
   if (name === 'agent-image') return <img src={agentIcon} alt="" />;
