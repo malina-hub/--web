@@ -1,16 +1,12 @@
 import { useRef, useState } from 'react';
 import MegaNav from '../components/mega-nav/MegaNav';
+import SiteFooter from '../components/SiteFooter';
 import logoTop from '../assets/figma/logo-top.svg';
-import logoFooter from '../assets/figma/logo-footer.svg';
-import contactLocation from '../assets/figma/contact-location.svg';
-import contactPhone from '../assets/figma/contact-phone.svg';
 import contactEmail from '../assets/figma/contact-email.svg';
 import citySwitchArrow from '../assets/city-switch-arrow.svg';
 import cityFrame from '../assets/city-frame.svg';
-import policeIcon from '../assets/figma/police.png';
-import integrityMark from '../assets/figma/integrity.png';
-import productLicense from '../assets/figma/product-license.png';
 import workshopImage from '../assets/carnival/workshop-2.png';
+import liveVideo from '../assets/carnival/galaxy-carnival-live.mp4';
 import makeupImage from '../assets/carnival/微信图片_20260723160434.jpg';
 import makeupImageAlt from '../assets/carnival/微信图片_20260723160442.jpg';
 import greenScreenImage from '../assets/carnival/微信图片_20260723160520.jpg';
@@ -95,7 +91,7 @@ function WorkshopExperience() {
         ))}
       </nav>
       <div className="workshop-gallery">
-        <AccordionGallery key={activeTab} items={gallerySets[activeTab]} defaultIndex={0} expandRatio={0.8} trigger="hover" overlayColor="#383838" height={460} gap={10} radius={12} accentColor="#80adf9" />
+        <AccordionGallery key={activeTab} items={gallerySets[activeTab]} defaultIndex={0} expandRatio={0.8} trigger="hover" overlayColor="#383838" height={460} gap={10} radius={12} accentColor="#80adf9" showLabels={false} />
       </div>
     </div>
   );
@@ -174,19 +170,6 @@ function CityShowcase() {
   );
 }
 
-function Footer() {
-  return (
-    <footer className="site-footer" id="contact">
-      <div className="footer-callout"><h2>准备好一起点亮<br/>下一座城市了吗</h2><a href="mailto:XXXX@gitv.cn">咨询商务</a></div>
-      <div className="footer-inner">
-        <div className="footer-brand"><div><img src={logoFooter} alt="GITV" /><h2>银河互联网电视</h2></div><p>智慧大屏整体解决方案引领者，以「内容+技术+运营」三位一体能力，连接内容、设备与人。让我们共同巩固基础、主动突破、多元拓展、建立生态。</p></div>
-        <div className="footer-contact"><h3>联系我们</h3><div><p><img src={contactLocation} alt="" />北京市丰台区南四环西路188号十八区7号楼</p><p><img src={contactPhone} alt="" />4006-597-010</p><p><img src={contactEmail} alt="" />XXXX@gitv.cn</p></div></div>
-        <div className="footer-legal"><div><p><span>银河互联网电视有限公司 版权所有</span><span>©gitv.cn 京ICP备14054596号-2</span><span><img src={policeIcon} alt="" />京公网安备 11010602005139号</span></p><p><span>网络文化经营许可证：京网文（2024）1468-073号</span><span>增值电信业务经营许可证：京B2-20212732</span></p><p><span>增值电信业务经营许可证：B2-20233776</span><span>互联网药品信息服务资格证书：(京)-经营性-2024-0502</span></p></div><aside><img src={integrityMark} alt="诚信经营标识" /><img src={productLicense} alt="产品许可证标识" /></aside></div>
-      </div>
-    </footer>
-  );
-}
-
 export default function CarnivalPage() {
   const scrollTo = (selector, event) => {
     event.preventDefault();
@@ -228,16 +211,16 @@ export default function CarnivalPage() {
         </div>
       </section>
 
-      <section className="content-section core" id="highlights"><div className="container"><SectionHeading title="一场嘉年华，四种沉浸体验" /><div className="four-grid">{highlights.map(([icon, title, text]) => <SpotlightCard className="feature-card" spotlightColor="rgba(0, 229, 255, 0.2)" key={title}><img src={icon} alt="" /><h3>{title}</h3><p>{text}</p></SpotlightCard>)}</div></div></section>
+      <section className="content-section core" id="highlights"><div className="container"><SectionHeading title="一场嘉年华，四种沉浸体验" /><div className="four-grid">{highlights.map(([, title, text]) => <SpotlightCard className="feature-card" spotlightColor="rgba(0, 74, 145, 0.72)" key={title}><h3>{title}</h3><p>{text}</p></SpotlightCard>)}</div></div></section>
 
       <section className="content-section workshop" id="workshop"><div className="container"><SectionHeading title="亲手走进电影幕后">影视幕后工坊・影视手艺片场技艺秀</SectionHeading><WorkshopExperience /></div></section>
 
-      <section className="content-section live"><div className="container"><SectionHeading title="身临其境，感受光影现场">每一帧都是沉浸式光影盛宴的精彩瞬间</SectionHeading><div className="live-media"><img src={workshopImage} alt="银河光影嘉年华活动现场"/></div></div></section>
+      <section className="content-section live"><div className="container"><SectionHeading title="身临其境，感受光影现场">每一帧都是沉浸式光影盛宴的精彩瞬间</SectionHeading><div className="live-media"><video src={liveVideo} controls playsInline preload="metadata" aria-label="银河光影嘉年华活动现场"/></div></div></section>
 
       <section className="content-section footprints" id="footprints"><div className="container"><SectionHeading title="下一站，与你的城市相见">足迹已至北京、上海，更多城市即将点亮</SectionHeading><CityShowcase /></div></section>
 
       <section className="content-section value"><div className="container"><SectionHeading title="让一场光影盛会，为城市持续创造价值">以影视工业体验为切入点，帮助地方文旅引流增收</SectionHeading><div className="four-grid value-grid">{values.map(([image,title,text]) => <article key={title}><img src={image} alt="" /><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
-      <Footer />
+      <SiteFooter />
     </main>
   );
 }

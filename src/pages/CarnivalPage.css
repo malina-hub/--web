@@ -47,8 +47,8 @@ body:has(> #root > .carnival-page) {
 .core .container { display: flex; flex-direction: column; gap: 40px; }
 .feature-card { min-height: 224px; padding: 28px 20px; display: flex; flex-direction: column; align-items: flex-start; border: .5px solid #354b7e; border-radius: 16px; background: linear-gradient(152deg, rgba(24,35,57,.5) 4%, rgba(19,54,81,.5) 57%, rgba(0,74,145,.5) 99%); transition: transform .25s ease, border-color .25s ease, filter .25s ease; }
 .feature-card:hover { border-color: rgba(118,173,255,.72); filter: brightness(1.12); transform: translateY(-6px); }
-.feature-card > img { width: 44px; height: 44px; margin-bottom: auto; padding: 9px; border-radius: 12px; object-fit: contain; }
-.feature-card h3 { margin: 18px 0 14px; color: #f2f6fc; font-size: 20px; font-weight: 600; line-height: 24px; }
+.feature-card::after { background: radial-gradient(260px circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%), var(--spotlight-color), transparent 70%); }
+.feature-card h3 { margin: 0 0 14px; }
 .feature-card p { margin: 0; color: rgba(255,255,255,.8); font-size: 16px; font-weight: 400; line-height: 26px; }
 .core::before, .core::after { display: none; }.core .section-heading h2 { color: #fff; opacity: 1; }
 
@@ -69,6 +69,7 @@ body:has(> #root > .carnival-page) {
 .workshop-gallery { min-width: 0; height: 460px; }
 .workshop .accordion-gallery { width: 100%; height: 460px; }
 .workshop .ag-panel { border: 1px solid rgba(110,156,218,.45); }
+.workshop .ag-panel--active .ag-panel__media img { object-position: 62% center; }
 .workshop .ag-panel--active { box-shadow: 0 0 0 2px rgba(128,173,249,.72), 0 18px 44px rgba(9,76,171,.22); }
 .media-note { margin: 0; text-align: center; line-height: 24px; }
 .schedule-layout { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 44px; align-items: start; }
@@ -105,8 +106,8 @@ body:has(> #root > .carnival-page) {
 .schedule-card > b { position: absolute; z-index: 1; right: 30px; bottom: -35px; color: transparent; font-size: 172px; font-weight: 700; line-height: 1; -webkit-text-stroke: 1px rgba(170,190,255,.24); }
 
 .live .container { display: flex; flex-direction: column; gap: 40px; }
-.live-media { width: 100%; height: 380px; overflow: hidden; border-radius: 20px; }
-.live-media img { width: 100%; height: 100%; display: block; object-fit: cover; }
+.live-media { width: 100%; height: auto; overflow: hidden; border-radius: 20px; background: #0b1220; }
+.live-media video { display: block; width: 100%; height: auto; max-height: none; object-fit: contain; }
 .live-media button { position: absolute; inset: 50% auto auto 50%; width: 64px; height: 64px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.55); border-radius: 50%; background: rgba(10,20,45,.32); opacity: 0; transform: translate(-50%,-50%) scale(.88); transition: opacity .2s, transform .2s, background .2s; }
 .live-media:hover button, .live-media button:focus-visible { opacity: 1; transform: translate(-50%,-50%) scale(1); }
 .live-media button:hover { background: rgba(24,115,237,.7); }
@@ -226,7 +227,7 @@ body:has(> #root > .carnival-page) {
   .workshop-gallery, .workshop .accordion-gallery { height: 360px; }
   .feature-card, .workshop-card, .value-grid article { min-height: auto; }
   .gallery-grid button { height: 112px; }
-  .live-media { height: 240px; }
+  .live-media { height: auto; }
   .city-card { min-height: 240px; }.city-card dl div { grid-template-columns: 64px 1fr; }
   .hero-rays { height: 100%; }
   .city-slide { height: 330px; padding: 22px; }

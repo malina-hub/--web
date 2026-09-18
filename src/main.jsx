@@ -5,6 +5,7 @@ import HomePage from './App';
 import CarnivalPage from './pages/CarnivalPage';
 import FrameworkPage from './pages/FrameworkPage';
 import LightProductPage from './pages/LightProductPage';
+import SmartScreenPage from './pages/SmartScreenPage';
 import './index.css';
 
 function SiteRouter() {
@@ -36,6 +37,7 @@ function SiteRouter() {
   if (captureView === 'tianguang-capabilities') return <LightProductPage capabilityOnly />;
   if (path === '/products/carnival') return <CarnivalPage />;
   if (path === '/products/tianguang') return <LightProductPage />;
+  if (path === '/products/aggregation') return <SmartScreenPage />;
   if (path === '/figma/tianguang-capabilities') return <LightProductPage capabilityOnly />;
   if (path === '/') return <HomePage />;
   return <FrameworkPage path={path} />;

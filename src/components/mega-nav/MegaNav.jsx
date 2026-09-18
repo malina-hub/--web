@@ -29,7 +29,7 @@ const iconPaths = {
   car: '<path d="m5 11 2-5h10l2 5M3 14h18v5H3zM7 19v2M17 19v2"/><circle cx="7" cy="15" r="1"/><circle cx="17" cy="15" r="1"/>',
 };
 
-function NavIcon({ name }) {
+export function NavIcon({ name }) {
   if (name === 'kids-image') return <img className="mega-nav-kids-icon" src={kidsIcon} alt="" />;
   if (name === 'solution-smart-screen-image') return <img src={solutionSmartScreenIcon} alt="" />;
   if (name === 'solution-home-image') return <img src={solutionHomeIcon} alt="" />;
