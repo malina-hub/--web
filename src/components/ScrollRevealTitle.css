@@ -1,0 +1,28 @@
+.scroll-reveal-title > span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(.55em);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal-title.is-revealed > span {
+  animation: scroll-reveal-title-wave .62s cubic-bezier(.2, .7, .3, 1) both;
+  animation-delay: calc(var(--reveal-index) * 36ms);
+}
+
+@keyframes scroll-reveal-title-wave {
+  0% { opacity: 0; transform: translateY(.55em); }
+  70% { opacity: 1; transform: translateY(-.07em); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal-title > span,
+  .scroll-reveal-title.is-revealed > span {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+}

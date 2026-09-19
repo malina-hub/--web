@@ -6,15 +6,14 @@ import contactEmail from '../assets/figma/contact-email.svg';
 import citySwitchArrow from '../assets/city-switch-arrow.svg';
 import cityFrame from '../assets/city-frame.svg';
 import workshopImage from '../assets/carnival/workshop-2.png';
-import liveVideo from '../assets/carnival/galaxy-carnival-live.mp4';
 import makeupImage from '../assets/carnival/微信图片_20260723160434.jpg';
 import makeupImageAlt from '../assets/carnival/微信图片_20260723160442.jpg';
 import greenScreenImage from '../assets/carnival/微信图片_20260723160520.jpg';
 import greenScreenImageAlt from '../assets/carnival/微信图片_20260723160537.jpg';
-import foleyVideo from '../assets/carnival/C6419.MP4';
-import foleyVideoAlt from '../assets/carnival/C6563.MP4';
-import dubbingVideo from '../assets/carnival/C0235.MP4';
-import dubbingVideoAlt from '../assets/carnival/C0239.MP4';
+import foleyImage from '../assets/carnival/微信图片_20260723160447.jpg';
+import foleyImageAlt from '../assets/carnival/微信图片_20260723160543.jpg';
+import dubbingImage from '../assets/carnival/微信图片_20260723160447.jpg';
+import dubbingImageAlt from '../assets/carnival/微信图片_20260723160543.jpg';
 import xiaohongshuCard from '../assets/carnival/xiaohongshu.jpg';
 import AccordionGallery from '../components/AccordionGallery';
 import Prism from '../components/Prism';
@@ -47,8 +46,8 @@ const workshopItems = [
 const gallerySets = [
   [{ image: makeupImage, label: '影视妆造揭秘', link: '#' }, { image: makeupImageAlt, label: '妆造现场', link: '#' }],
   [{ image: greenScreenImage, label: '影视绿幕拍摄', link: '#' }, { image: greenScreenImageAlt, label: '绿幕现场', link: '#' }],
-  [{ image: foleyVideo, label: '影视拟音特技', link: '#' }, { image: foleyVideoAlt, label: '拟音特效现场', link: '#' }],
-  [{ image: dubbingVideo, label: '影视原声配音', link: '#' }, { image: dubbingVideoAlt, label: '原声配音现场', link: '#' }],
+  [{ image: foleyImage, label: '影视拟音特技', link: '#' }, { image: foleyImageAlt, label: '拟音特效现场', link: '#' }],
+  [{ image: dubbingImage, label: '影视原声配音', link: '#' }, { image: dubbingImageAlt, label: '原声配音现场', link: '#' }],
 ];
 
 const workshopTracks = [
@@ -215,7 +214,7 @@ export default function CarnivalPage() {
 
       <section className="content-section workshop" id="workshop"><div className="container"><SectionHeading title="亲手走进电影幕后">影视幕后工坊・影视手艺片场技艺秀</SectionHeading><WorkshopExperience /></div></section>
 
-      <section className="content-section live"><div className="container"><SectionHeading title="身临其境，感受光影现场">每一帧都是沉浸式光影盛宴的精彩瞬间</SectionHeading><div className="live-media"><video src={liveVideo} controls playsInline preload="metadata" aria-label="银河光影嘉年华活动现场"/></div></div></section>
+      <section className="content-section live"><div className="container"><SectionHeading title="身临其境，感受光影现场">每一帧都是沉浸式光影盛宴的精彩瞬间</SectionHeading><div className="live-media"><img src={workshopImage} alt="银河光影嘉年华活动现场" /></div></div></section>
 
       <section className="content-section footprints" id="footprints"><div className="container"><SectionHeading title="下一站，与你的城市相见">足迹已至北京、上海，更多城市即将点亮</SectionHeading><CityShowcase /></div></section>
 

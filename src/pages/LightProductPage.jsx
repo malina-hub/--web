@@ -3,9 +3,9 @@ import MegaNav from '../components/mega-nav/MegaNav';
 import SiteFooter from '../components/SiteFooter';
 import logoTop from '../assets/figma/logo-top.svg';
 import heroBackground from '../assets/figma-pages/engine-hero.png';
-import metricIconOne from '../assets/figma-pages/engine-metric-1.svg';
-import metricIconTwo from '../assets/figma-pages/engine-metric-2.svg';
-import metricIconThree from '../assets/figma-pages/engine-metric-3.svg';
+import metricIconRise from '../assets/figma-pages/engine-metric-rise.png';
+import metricIconTarget from '../assets/figma-pages/engine-metric-target.png';
+import metricIconScale from '../assets/figma-pages/engine-metric-scale.png';
 import dataCardOne from '../assets/figma-pages/engine-data-1.svg';
 import dataCardTwo from '../assets/figma-pages/engine-data-2.svg';
 import dataCardThree from '../assets/figma-pages/engine-data-3.svg';
@@ -22,9 +22,9 @@ const features = [
 ];
 
 const metrics = [
-  ['数十亿级', '日均处理请求', metricIconOne],
-  ['90%+', '推荐准确率', metricIconTwo],
-  ['显著跃升', '观看时长与点击转化', metricIconThree],
+  ['数十亿级', '日均处理请求', metricIconScale],
+  ['90%+', '推荐准确率', metricIconTarget],
+  ['显著跃升', '观看时长与点击转化', metricIconRise],
 ];
 
 function CapabilityMock({ feature, active }) {

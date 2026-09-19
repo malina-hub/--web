@@ -16,6 +16,27 @@ import aboutNews from '../assets/figma-pages/about-news.png';
 import aggregationHeroLeft from '../assets/figma-pages/products-aggregation/aggregation-raw-01.png';
 import aggregationHeroCenter from '../assets/figma-pages/products-aggregation/aggregation-raw-05.png';
 import aggregationHeroRight from '../assets/figma-pages/products-aggregation/aggregation-raw-06.png';
+import figmaHeroBackground from '../assets/figma-pages/engine-hero.png';
+import smartWideHeroBackground from '../assets/figma-pages/smart-wide-hero-bg.png';
+import advertisingHeroBackground from '../assets/figma-pages/advertising/advertising-hero-bg.png';
+import metricIconRise from '../assets/figma-pages/engine-metric-rise.png';
+import metricIconTarget from '../assets/figma-pages/engine-metric-target.png';
+import metricIconScale from '../assets/figma-pages/engine-metric-scale.png';
+import dataCardOne from '../assets/figma-pages/engine-data-1.svg';
+import dataCardTwo from '../assets/figma-pages/engine-data-2.svg';
+import dataCardThree from '../assets/figma-pages/engine-data-3.svg';
+import smartFeatureLauncher from '../assets/figma-pages/smart-screen/smart-feature-01.png';
+import smartFeatureVOD from '../assets/figma-pages/smart-screen/smart-feature-02.png';
+import smartFeatureLive from '../assets/figma-pages/smart-screen/smart-feature-03.png';
+import smartFeatureSearch from '../assets/figma-pages/smart-screen/smart-feature-04.png';
+import adKfc from '../assets/figma-pages/advertising/kfc.png';
+import adCk from '../assets/figma-pages/advertising/ck.png';
+import adSisley from '../assets/figma-pages/advertising/sisley.png';
+import adVitasoy from '../assets/figma-pages/advertising/vitasoy.png';
+import adHailu from '../assets/figma-pages/advertising/hailu.png';
+import adAsahi from '../assets/figma-pages/advertising/asahi.png';
+import adYulin from '../assets/figma-pages/advertising/yulin.png';
+import adCcb from '../assets/figma-pages/advertising/ccb.png';
 import './FrameworkPage.css';
 
 const productGroups = [
@@ -84,30 +105,104 @@ function ProductMatrixPage(){
   </main>;
 }
 
-function GalaxyTvPage(){
-  const capabilities = [
-    ['央媒品质', '央视、卫视、央媒权威内容源，正版高清品质保障。'],
-    ['亿级内容库', '海量电影、电视剧、综艺、动漫、少儿、纪录片等全品类覆盖。'],
-    ['AI智能推荐', '深度学习算法驱动，千人千面个性化推荐，越看越懂你。'],
-    ['极致体验', '4K 超高清、HDR、杜比音效，毫秒级起播零等待。'],
-  ];
-  return <main className="galaxy-tv-page">
-    <section className="galaxy-tv-hero"><div className="galaxy-tv-hero__content"><span className="galaxy-tv-eyebrow">GALAXY PANSCREEN · 智慧泛屏</span><h1>连接每一块屏，<em>享受好内容</em></h1><p>智慧泛屏是银河互联网电视面向泛屏生态推出的全场景视听解决方案。以银河 TV 为核心载体，覆盖智能机顶盒、VR 设备、车载屏、智能音箱、投影仪、一体机等多元终端，将优质视听内容与智能推荐能力延伸至家庭与出行的每一个角落。</p><div className="design-actions"><a href="#galaxy-tv-capabilities">探索产品能力</a><a href="mailto:XXXX@gitv.cn">咨询商务</a></div></div><img src={productsHero} alt="智慧泛屏" /></section>
-    <section className="design-section galaxy-tv-capabilities" id="galaxy-tv-capabilities"><Heading title="让好内容触达每一块屏">央媒品质 · 全品类内容 · AI 智能推荐</Heading><div className="galaxy-tv-capability-grid">{capabilities.map(([title,text],index)=><article key={title}><span>0{index+1}</span><h3>{title}</h3><p>{text}</p></article>)}</div></section>
-  </main>;
+const smartMetrics = [
+  ['数十亿级', '日均处理请求', metricIconScale],
+  ['90%+', '推荐准确率', metricIconTarget],
+  ['90%+', '推荐准确率', metricIconTarget],
+  ['显著跃升', '观看时长与点击转化', metricIconRise],
+];
+
+function FigmaHero({ title, description, anchor, button = '查看解决方案', heroImage = figmaHeroBackground }) {
+  return <section className="figma-product-hero" style={{ '--figma-hero-image': `url(${heroImage})` }}>
+    <div className="figma-product-hero__content"><h1>{title}</h1><p>{description}</p><div className="figma-product-hero__actions"><a className="is-primary" href={`#${anchor}`}>{button}</a><a href="mailto:XXXX@gitv.cn">咨询商务</a></div></div>
+  </section>;
 }
 
-function AiNewsPage(){
-  const capabilities = [
-    ['AI数字人播报', 'AI数字人视频生产，文本到视频分钟级输出，快速生成适配大屏的资讯内容。'],
-    ['全流程自动化', '7×12 小时不间断更新，减少人工介入，让资讯生产与播控持续稳定运行。'],
-    ['精准混合推荐', '融合央媒内容、泛娱乐片库与用户画像行为数据，实现更精准的内容匹配。'],
-    ['原生高效变现', '通过高峰插播与沉浸式续播，在不打断观看体验的同时提升内容曝光与收益。'],
+function FigmaMetrics({ title, description, items = smartMetrics }) {
+  return <section className="figma-metrics-section"><Heading title={title}>{description}</Heading><div className="figma-metrics-panel">{items.map(([value, label, icon], index) => <article key={`${value}-${label}-${index}`}><img src={icon} alt="" /><strong>{value}</strong><span>{label}</span></article>)}</div></section>;
+}
+
+const smartContentFeatures = [
+  { title:'央媒品质', text:'央视、卫视、央媒权威内容源，正版高清品质保障。', points:['央视、卫视、央媒权威内容源', '正版高清品质保障'], image:smartFeatureLauncher },
+  { title:'亿级内容库', text:'海量电影、电视剧、综艺、动漫、少儿、纪录片等全品类覆盖。', points:['电影、电视剧、综艺、动漫', '少儿、纪录片等全品类'], image:smartFeatureVOD, reverse:true },
+  { title:'AI智能推荐', text:'深度学习算法驱动，千人千面个性化推荐，越看越懂你。', points:['深度学习算法驱动', '千人千面个性化推荐'], image:smartFeatureLive },
+  { title:'极致体验', text:'4K 超高清、HDR、杜比音效，毫秒级起播零等待。', points:['4K 超高清 · HDR · 杜比音效', '毫秒级起播 · 零等待'], image:smartFeatureSearch, reverse:true },
+];
+
+function SmartWideFeature({ feature }) {
+  const copy = <div className="smart-wide-feature__copy"><div className="smart-wide-feature__intro"><h3>{feature.title}</h3><p>{feature.text}</p></div><div className="smart-wide-feature__details"><ul>{feature.points.map(point => <li key={point}>{point}</li>)}</ul><a href="mailto:XXXX@gitv.cn">咨询产品</a></div></div>;
+  const visual = <div className="smart-wide-feature__visual"><img src={feature.image} alt={`${feature.title}产品界面`} /></div>;
+  return <article className={`smart-wide-feature${feature.reverse ? ' is-reverse' : ''}`}>{feature.reverse ? <>{visual}{copy}</> : <>{copy}{visual}</>}</article>;
+}
+
+function SmartWidePage() {
+  const scenes = [
+    ['智能电视', '为电视厂商提供完整的大屏内容与产品体验。', 'smart-screen'],
+    ['运营商终端', '支持广电与电信运营商打造差异化家庭影音服务。', 'data-image'],
+    ['智能投影', '适配投影仪、闺蜜机等泛屏终端。', 'smart-wide'],
+    ['家庭娱乐', '覆盖影视、亲子、资讯与休闲娱乐等家庭场景。', 'kids-image'],
   ];
-  return <main className="ai-news-page">
-    <section className="ai-news-hero"><div className="ai-news-hero__content"><span className="ai-news-eyebrow">AI NEWS · AI资讯</span><h1>零干预，<em>高转化</em></h1><p>银河 AI 数字人视频生产与播控一体解决方案，集 AI 生成、自动化生产与智能播控于一体，实现从文本到高质量视频的分钟级高效输出。</p><div className="design-actions"><a href="#ai-news-capabilities">探索产品能力</a><a href="mailto:XXXX@gitv.cn">咨询商务</a></div></div><img src={productsAi} alt="AI资讯智能生产与播控" /></section>
-    <section className="design-section ai-news-capabilities" id="ai-news-capabilities"><Heading title="让资讯生产更高效">AI 生成 · 自动化生产 · 智能播控 · 原生变现</Heading><div className="ai-news-capability-grid">{capabilities.map(([title,text],index)=><article key={title}><span>0{index+1}</span><h3>{title}</h3><p>{text}</p></article>)}</div></section>
-  </main>;
+  return <div className="figma-product-page figma-smart-wide-page">
+    <FigmaHero title={<>连接每一块屏，<em>享受好内容</em></>} description="面向泛屏生态的全场景视听解决方案，以银河 TV 为核心，覆盖智能机顶盒、VR、车载屏、智能音箱、投影仪等多元终端，让优质内容与智能推荐延伸至家庭与出行。" anchor="smart-wide-content" heroImage={smartWideHeroBackground} />
+    <FigmaMetrics title="为什么选择天光引擎" description="天光引擎深度嵌入观影主链路，让每一次点击都更精准，每一段观看都更沉浸" />
+    <section className="figma-light-section smart-wide-content-section" id="smart-wide-content"><Heading title="让好内容触达每一块屏">央媒品质 · 全品类内容 · AI 智能推荐</Heading><div className="smart-wide-feature-list">{smartContentFeatures.map(feature => <SmartWideFeature key={feature.title} feature={feature} />)}</div></section>
+    <section className="figma-light-section figma-scenes-section"><Heading title="典型应用场景" /><div className="figma-scene-grid">{scenes.map(([title, text, icon]) => <article key={title}><span className="figma-card-icon"><NavIcon name={icon} /></span><h3>{title}</h3><p>{text}</p></article>)}</div></section>
+  </div>;
+}
+
+function DataDashboard() {
+  return <div className="data-dashboard"><div className="data-dashboard__surface"><div className="data-dashboard__top"><strong>GITV</strong><span>数据资产沉淀</span></div><div className="data-dashboard__hero"><small>数据资产中心</small><b>看清每一次增长</b></div><div className="data-dashboard__tiles"><i>埋点日志</i><i>终端数据</i><i>业务指标</i></div></div></div>;
+}
+
+function DataPage() {
+  const products = [
+    ['BI平台', '敏捷多主题数据查询，辅助数据化运营决策。'],
+    ['RT平台', '面向内外部客户的数据可视化平台，已开放给多个移动省公司。'],
+    ['DMP平台', '融合大数据与 AI，洞察用户行为，精准圈选与分发受众。'],
+    ['多维分析平台', '点选即可查询分析，自由探索数据价值。'],
+  ];
+  const scenes = [['运营商数据化运营决策', '支撑业务数据统一分析与实时决策。'], ['广电业务数据概览', '聚合关键指标，快速掌握业务运行状态。'], ['广告精准投放与分账', '以数据洞察人群与效果，提升经营效率。']];
+  return <div className="figma-product-page figma-data-page">
+    <FigmaHero title={<>全链路数据能力，<em>驱动业务增长</em></>} description="提供数据支撑“埋点、采集、计算、开发、调度、监控、智能推荐和数据可视化”等能力，全链路支撑各业务线数据化运营能力，促进数据驱动业务创新。覆盖移动、电信、联通、广电等业务，日均处理百亿级事件。" anchor="data-capabilities" />
+    <section className="figma-light-section data-capabilities-section" id="data-capabilities"><Heading title="四大核心能力">全链路支撑各业务线数据化运营能力，促进数据驱动业务创新</Heading><div className="data-capabilities__body"><div className="figma-tabs"><button className="is-active">数据采集</button><button>数据资产</button><button>数据标签</button><button>智能推荐</button></div><div className="data-feature"><div><h3>数据采集</h3><p>多源实时采集，链路安全稳定</p><ul><li>采集链路安全稳定</li><li>采集场景丰富多样</li></ul><a href="mailto:XXXX@gitv.cn">咨询方案</a></div><DataDashboard /></div></div></section>
+    <section className="figma-light-section data-summary-section"><Heading title="让数据能力，稳稳跑在业务之上">从埋点、采集到计算、调度、监控与推荐，覆盖数据全链路业务能力。</Heading><div className="data-summary-grid">{[[dataCardOne, '全链路数据能力', '埋点 · 采集 · 计算'], [dataCardTwo, '多源实时采集', '客户端 · 业务 · 第三方'], [dataCardThree, '标签推荐与可视化', '3000+ 标签 · BI / RT']].map(([image, title, text]) => <article key={title}><img src={image} alt="" /><div><b>{title}</b><span>{text}</span></div></article>)}</div></section>
+    <section className="figma-light-section data-products-section"><Heading title="全方位大数据产品">四大子产品协同，覆盖数据分析、可视化、营销与智能推荐全场景</Heading><div className="data-product-grid">{products.map(([title, text]) => <article key={title}><h3>{title}</h3><p>{text}</p></article>)}</div></section>
+    <section className="figma-light-section data-scenes-section"><Heading title="每一个业务现场，都有数据答案" /><div className="data-scene-grid">{scenes.map(([title, text]) => <article key={title}><span className="figma-card-icon"><NavIcon name="data-image" /></span><h3>{title}</h3><p>{text}</p></article>)}</div></section>
+  </div>;
+}
+
+const adCases = [
+  [adKfc, '餐饮连锁 · 春节IP联名', '肯德基×哪吒：春节创意开机，沉浸先声夺人', '春节营销旺季，肯德基联名国民级IP《哪吒》，以创意开机广告抢占大屏第一入口：哪吒主题创意画面全屏呈现，生动视效带来沉浸式品牌体验，“开机即见”先入为主锁定家庭注意力，让品牌春节主张随国民IP在团圆场景中强势出圈。投放累计曝光超百万次，高效占位品牌节日心智。'],
+  [adCk, '国际时尚', 'CK·全国年轻群体大屏时尚营销', 'Calvin Klein依托银河互联网电视OTT全国覆盖能力，以DMP数据能力定向18-30岁年轻消费群体，全国范围投放开机大屏广告。依托智能电视全屏高清视觉呈现，CK标志性的黑白极简美学与年轻化品牌调性在家庭场景中获得沉浸式表达，开机即触达的强曝光形式有效建立品牌第一印象。'],
+  [adSisley, '高端美妆', '希思黎·高端美妆人群精准触达', '法国高端护肤品牌希思黎（Sisley）携手银河OTT，全国范围定向热爱时尚、关注美妆护肤、有明确皮肤保养需求的年轻女性人群。依托大屏4K超高清画质，希思黎植物护肤的产品质感与品牌格调得以完整呈现，助力希思黎在高价值女性人群中建立“高端、专业、值得信赖”的品牌心智。'],
+  [adVitasoy, '饮料食品', '维他奶·核心区域竞品人群精准拦截', '维他奶聚焦广东、上海两大核心销售区域，通过银河DMP三重定向叠加投放：定向18-45岁关注饮料、美食、快餐内容的高潜人群，锁定关注及点击过竞品品牌及产品的用户，并聚焦核心市场避免预算外溢。开机广告与贴片广告组合触达，有效拦截竞品人群注意力。'],
+  [adHailu, '医药健康', '海露·全广告位组合高频覆盖', '海露人工泪液全国范围广泛投放，采用开机广告、贴片广告、角标广告多形式组合策略，全面覆盖用户从开机到观影的完整大屏使用路径。三层广告位层层递进、高频叠加，形成“看见—理解—记住”的完整触达闭环，助力海露在护眼品类中建立大屏认知优势。'],
+  [adAsahi, '酒水饮料', '朝日啤酒·五城高价值人群精投', '朝日啤酒锁定上海、深圳、广州、杭州、福州五大重点销售城市，通过银河DMP多标签交叉圈定20-45岁核心消费人群，实现从品牌粉丝、品类爱好者到高端消费力人群的立体覆盖。城市定向确保广告投放与销售渠道高度重合，助力核心城市市场深耕。'],
+  [adYulin, '医药健康 · 体育营销', '玉林正骨水·世界杯体育人群场景营销', '玉林正骨水借势世界杯顶级体育IP，携手银河OTT大屏于6-7月赛事周期集中强势曝光。依托DMP内容兴趣定向能力，精准锁定关注世界杯及体育内容的高潜人群，聚焦成都、南宁、郑州三大核心市场，让品牌传播与观赛情绪深度绑定，强化“运动守护、国民好药”的品牌认知。'],
+  [adCcb, '金融银行', '中国建设银行：开机广告区域品牌深耕', '建设银行杭州分行依托银河互联网电视大屏资源，定向投放杭州区域开机广告，于19-22时家庭观影高峰集中曝光，全屏沉浸式呈现品牌形象，实现“开机即见品牌”的强触达。通过地域精准定向聚焦杭州本地家庭用户，投放期间累计触达杭州地区百万户智能电视家庭，强化“身边可信的银行”区域品牌形象。'],
+];
+
+function AdvertisingPage() {
+  const formats = [['创意开机', '开机全屏展示，强势第一眼曝光，触达用户开机第一时刻', ['支持秒针曝光监测', '地域/频次/时间定向', '智能电视+盒子全终端覆盖']], ['Launcher Tips', '开机进入桌面即弹出，点击可跳转详情页全屏播放', ['位置及大小灵活配置', '支持秒针曝光监测', '支持推荐语和副推荐语配置']]];
+  const smallFormats = [['Tips图片广告', '进入Launcher即弹出，用户观看内容必经路径，强势曝光'], ['活动频道焦点首映', '开机进入Launcher页，落焦指定焦点图广告位，1s后自动全屏展示视频广告'], ['首页焦点视频', '桌面首页核心流量入口，点击可全屏播放，原生融入桌面'], ['屏保广告', '无操作5分钟启动，展示5秒/张，5轮播，覆盖低活跃时段']];
+  return <div className="figma-product-page figma-ad-page">
+    <FigmaHero title={<>家庭大屏营销 · <em>全域价值经营</em></>} description="立足牌照方公信力与内容品质优势，依托运营商渠道与大数据能力，提供从策略洞察、精准触达到效果评估的全链路营销解决方案。" anchor="ad-platforms" button="了解广告资源" heroImage={advertisingHeroBackground} />
+    <section className="figma-light-section ad-platform-section" id="ad-platforms"><Heading title="两大核心平台">全链路闭环服务</Heading><div className="ad-platform-grid"><article><span>✦ 全链路闭环服务</span><h3>银河广告聚合平台及银河广告 ADX 平台</h3><div className="ad-platform-copy"><p>面向品牌广告主的一站式大屏投放中枢，整合开机、前贴、暂停、角标、屏保等全场景广告资源。</p><p>支持程序化购买与灵活排期，覆盖投放规划、素材管理、实时监测与效果归因，帮助品牌实现高效、透明、可衡量的营销投放。</p></div></article><article><span>✦ 全链路闭环服务</span><h3>银河大数据平台（DMP）</h3><div className="ad-platform-copy"><p>融合运营商通讯数据、亿级内容播放数据与用户收视行为数据，构建覆盖用户属性、兴趣偏好与家庭场景的多维标签体系。</p><p>支持人群精准圈选、定向投放与实时效果监测，让品牌看得准、投得对、算得清。</p></div></article></div></section>
+    <section className="figma-light-section ad-formats-section"><Heading title="覆盖每一个关键入口">从开机、桌面到点播与贴片，覆盖家庭大屏全场景广告资源。</Heading><div className="figma-tabs"><button className="is-active">Launcher 广告</button><button>直播广告</button><button>点播广告</button></div><div className="ad-format-grid">{formats.map(([title, text, points]) => <article key={title}><div><span>✦ 全链路闭环服务</span><h3>{title}</h3><p>{text}</p><ul>{points.map(point => <li key={point}>{point}</li>)}</ul><a href="mailto:XXXX@gitv.cn">咨询产品</a></div><div className="ad-format-visual"><b>{title}</b><i /><i /><i /></div></article>)}</div><div className="ad-small-format-grid">{smallFormats.map(([title, text]) => <article key={title}><h3>{title}</h3><p>{text}</p></article>)}</div></section>
+    <section className="figma-light-section ad-cases-section"><Heading title="跨行业实践，验证大屏营销价值">覆盖餐饮、时尚、美妆、食品等行业，以多元广告场景组合持续验证家庭大屏营销价值。</Heading><div className="ad-case-marquee"><div className="ad-case-track">{[...adCases, ...adCases].map(([image, tag, title, text], index) => <article className="ad-case-card" key={`${title}-${index}`}><img src={image} alt="" /><div><span>{tag}</span><h3>{title}</h3><p>{text}</p></div></article>)}</div></div></section>
+  </div>;
+}
+
+function AiNewsPage() {
+  const metrics = [['AI数字人', '文本到视频分钟级输出', metricIconScale], ['7×24小时', '全流程自动化更新', metricIconTarget], ['精准推荐', '央媒内容 + 泛娱乐片库 + 用户画像', metricIconTarget], ['高效变现', '高峰插播 + 沉浸式续播', metricIconRise]];
+  const features = [['AI数字人播报', 'AI数字人视频生产，文本到视频分钟级输出。', ['文本到视频', '分钟级输出'], smartFeatureLauncher], ['全流程自动化', '7×24 小时不间断更新，零人工干预。', ['7×24小时', '零人工干预'], smartFeatureVOD], ['精准混合推荐', '央媒内容 + 泛娱乐片库 + 用户画像行为数据匹配。', ['央媒权威内容', '用户画像匹配'], smartFeatureLive], ['原生高效变现', '高峰精准插播 + 沉浸式续播，提升曝光收益。', ['精准插播', '沉浸式续播'], smartFeatureSearch]];
+  const scenes = [['AI直播资讯频道', '打造 7×24 小时自动更新的智能资讯频道。'], ['AI点播资讯专区', '沉淀 AI 生成内容，支持点播场景灵活分发。'], ['开机AI快讯推荐', '以开机快讯快速触达用户，提升内容曝光。'], ['广告 / 付费内容转化', '结合精准推荐与沉浸式续播，提升内容与广告收益。']];
+  return <div className="figma-product-page figma-ai-page">
+    <FigmaHero title={<>零干预 · <em>高转化的资讯体验方案</em></>} description="银河 AI 数字人生产与播控一体解决方案，实现从文本到高质量视频的分钟级输出，7×24 小时自动化更新，并融合央媒内容、泛娱乐片库与用户画像精准匹配。" anchor="ai-capabilities" />
+    <FigmaMetrics title="四大核心能力板块" items={metrics}>AI数字人、自动化生产、精准推荐与高效变现，构建资讯内容从生产到分发的完整闭环。</FigmaMetrics>
+    <section className="figma-light-section ai-feature-section" id="ai-capabilities"><Heading title="从生产到分发，让资讯持续高效触达">AI数字人、自动化生产与智能播控协同，打造零干预、高转化的资讯体验。</Heading><div className="ai-feature-list">{features.map(([title, text, points, image], index) => <article key={title} className={index % 2 ? 'is-reverse' : ''}><div className="ai-feature-copy"><h3>{title}</h3><p>{text}</p><ul>{points.map(point => <li key={point}>{point}</li>)}</ul><a href="mailto:XXXX@gitv.cn">咨询产品</a></div><img src={image} alt={`${title}产品界面`} /></article>)}</div></section>
+    <section className="figma-light-section ai-scenes-section"><Heading title="典型应用场景" /><div className="figma-scene-grid">{scenes.map(([title, text]) => <article key={title}><span className="figma-card-icon"><NavIcon name="ai-news-image" /></span><h3>{title}</h3><p>{text}</p></article>)}</div></section>
+  </div>;
 }
 
 function SolutionOverviewPage(){return <main className="solutions-overview-page">
@@ -141,4 +236,24 @@ function EnginePage(){return <><PageHero title="智赋大屏，价值深耕"><p>
 
 function AboutPage(){const news=[['2026.07.25','银河互联网电视发布影音智能体 2.0，重新定义大屏交互'],['2025.03.11','携手省级广电网络，智慧大屏解决方案覆盖 800 万家庭'],['2024.09.10','银河少儿通过国家少儿内容安全认证，行业首家获此资质']];return <><PageHero title="连接内容、设备与人" image={aboutHero}><p>银河互联网电视有限公司<br/>巩固基础、主动突破、多元拓展、建立生态</p></PageHero><section className="design-section about-intro"><Heading title="立足内容与技术，共建大屏生态"/><p>银河互联网电视有限公司（GITV）成立于 2012 年 7 月，由中央人民广播电台、江苏省广播电视总台和北京爱奇艺科技有限公司共同发起设立。银河以北京为基地，面向全国开展互联网电视业务，依托股东方资源，为内容服务平台与终端厂商提供正版内容及技术产品服务。</p><div><article><small>OUR MISSION</small><h3>连接内容与设备</h3></article><article><small>CONTENT</small><h3>正版内容与技术服务</h3></article></div></section><section className="design-section"><Heading title="稳步发展，持续连接"/><div className="timeline">{[['2012.07','公司成立'],['2015.04','引入战略投资'],['2020.08','深化资源协同']].map(([y,t])=><article key={y}><span>{y}</span><h3>{t}</h3><p>持续汇聚股东资源与行业伙伴，推动互联网电视业务稳步发展。</p></article>)}</div></section><section className="design-section"><Heading title="持续创新，行业前沿">关注银河互联网电视动态与行业洞察。</Heading><div className="news-list">{news.map(([d,t],i)=><article key={d}>{i===0&&<img src={aboutNews} alt=""/>}<span>{d}</span><h3>{t}</h3><p>银河持续推进产品、技术与生态合作，以创新能力服务更多家庭用户。</p></article>)}</div></section><section className="design-section"><Heading title="行业认可，持续前行"/><div className="honor-grid">{['国家高新技术企业','广电行业科技创新奖','CMMI3 级认证','中国智能大屏领军企业','等保三级认证','北京市专精特新企业','智慧大屏行业 Top10','AI 大屏创新奖'].map(x=><span key={x}>{x}</span>)}</div></section><section className="contact-cards"><Heading title="与我们取得联系">期待与您共同探索内容、技术与运营的更多可能。</Heading><div><article><b>商务合作</b><span>XXXX@gitv.cn</span></article><article><b>公司地址</b><span>北京市丰台区南四环西路 188 号</span></article></div></section></>}
 
-export default function FrameworkPage({path}){let page;if(path==='/products')page=<ProductMatrixPage/>;else if(['aggregation','agent','advertising','data'].some(x=>path===`/products/${x}`))page=<ProductsPage/>;else if(path==='/products/galaxytv')page=<GalaxyTvPage/>;else if(path==='/products/ainews')page=<AiNewsPage/>;else if(path==='/products/kids')page=<KidsPage/>;else if(path==='/products/tianguang')page=<EnginePage/>;else if(path==='/about')page=<AboutPage/>;else if(path==='/solutions')page=<SolutionsPage/>;else if(path.startsWith('/solutions/'))page=<SolutionsPage detail={path.split('/').pop()}/>;else page=<ProductMatrixPage/>;const isSolutions=path==='/solutions';return <main className="design-page"><MegaNav logoSrc={logoTop}/>{page}<SiteFooter {...(isSolutions?{calloutTitle:'共同探索更多业务场景',calloutSubtitle:'围绕您的终端形态、内容需求与运营目标，沟通适合的能力组合。',calloutAction:'联系我们'}:{})}/></main>}
+export default function FrameworkPage({path}){
+  let page;
+  if(path==='/products') page=<ProductMatrixPage/>;
+  else if(path==='/products/data') page=<DataPage/>;
+  else if(path==='/products/advertising') page=<AdvertisingPage/>;
+  else if(path==='/products/galaxytv') page=<SmartWidePage/>;
+  else if(path==='/products/ainews') page=<AiNewsPage/>;
+  else if(['aggregation','agent'].some(x=>path===`/products/${x}`)) page=<ProductsPage/>;
+  else if(path==='/products/kids') page=<KidsPage/>;
+  else if(path==='/products/tianguang') page=<EnginePage/>;
+  else if(path==='/about') page=<AboutPage/>;
+  else if(path==='/solutions') page=<SolutionsPage/>;
+  else if(path.startsWith('/solutions/')) page=<SolutionsPage detail={path.split('/').pop()}/>;
+  else page=<ProductMatrixPage/>;
+  const isSolutions=path==='/solutions';
+  const isFigmaProduct=['/products/data','/products/advertising','/products/galaxytv','/products/ainews'].includes(path);
+  const footerProps = path==='/products/data'
+    ? {calloutTitle:'AI 时代的新工作方式',calloutSubtitle:'从银河开始',calloutAction:'咨询商务'}
+    : {calloutTitle:'让优质内容进入更多家庭大屏',calloutSubtitle:'',calloutAction:'咨询产品合作'};
+  return <main className={`design-page${isFigmaProduct ? ' design-page--figma-product' : ''}`}><MegaNav logoSrc={logoTop}/>{page}<SiteFooter {...(isSolutions?{calloutTitle:'共同探索更多业务场景',calloutSubtitle:'围绕您的终端形态、内容需求与运营目标，沟通适合的能力组合。',calloutAction:'联系我们'}:isFigmaProduct?footerProps:{})}/></main>
+}

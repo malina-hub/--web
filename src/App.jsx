@@ -2,6 +2,7 @@ import ColorBends from './components/ColorBends';
 import ChromaGrid from './components/ChromaGrid';
 import MegaNav from './components/mega-nav/MegaNav';
 import SiteFooter from './components/SiteFooter';
+import ScrollRevealTitle from './components/ScrollRevealTitle';
 import logoTop from './assets/figma/logo-top.svg';
 import buttonArrow from './assets/figma/button-arrow.svg';
 import ecoPartner1 from './assets/partners/1.png';
@@ -30,7 +31,7 @@ const ecoPartners = [ecoPartner1, ecoPartner2, ecoPartner3, ecoPartner4, ecoPart
 const carrierPartners = [carrierPartner1, carrierPartner2, carrierPartner3];
 
 function PartnerTitle({ children }) {
-  return <div className="partner-title"><i /><h3>{children}</h3><i /></div>;
+  return <div className="partner-title"><i /><ScrollRevealTitle as="h3">{children}</ScrollRevealTitle><i /></div>;
 }
 
 export default function App() {
@@ -54,17 +55,17 @@ export default function App() {
       </section>
 
       <section className="metrics section" id="metrics">
-        <h2>亿万家庭的共同选择</h2>
+        <ScrollRevealTitle>亿万家庭的共同选择</ScrollRevealTitle>
         <div className="metric-chroma"><ChromaGrid items={metricItems} columns={2} rows={2} radius={300} damping={0.45} fadeOut={0.6} ease="power3.out" /></div>
       </section>
 
       <section className="story section" id="story">
-        <div className="story-copy"><h2>让智慧融入每一种家庭生活</h2><p>{story}</p></div>
+        <div className="story-copy"><ScrollRevealTitle>让智慧融入每一种家庭生活</ScrollRevealTitle><p>{story}</p></div>
         <div className="media-placeholder"><img src={homeScreenImage} alt="GITV 大屏界面" /></div>
       </section>
 
       <section className="partners section" id="partners">
-        <h2>与你熟悉的品牌，共创更好的大屏体验</h2>
+        <ScrollRevealTitle>与你熟悉的品牌，共创更好的大屏体验</ScrollRevealTitle>
         <div className="partner-groups">
           <div className="partner-group"><PartnerTitle>生态合作伙伴</PartnerTitle><div className="partner-grid eco-grid">{ecoPartners.map((src, i) => <img className="partner-card-image" src={src} alt={`生态合作伙伴 ${i + 1}`} key={src} />)}</div></div>
           <div className="partner-group"><PartnerTitle>运营商合作伙伴</PartnerTitle><div className="partner-grid carrier-grid">{carrierPartners.map((src, i) => <img className="partner-card-image" src={src} alt={`运营商合作伙伴 ${i + 1}`} key={src} />)}</div></div>
